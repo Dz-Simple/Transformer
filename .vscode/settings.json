@@ -1,0 +1,123 @@
+{
+  // LaTeX Workshop 配置
+  
+  // 编译工具链配置（Linux系统使用PATH中的命令）
+  "latex-workshop.latex.tools": [
+    {
+      "name": "xelatex",
+      "command": "xelatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOCFILE%"
+      ]
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOCFILE%"
+      ]
+    },
+    {
+      "name": "bibtex",
+      "command": "bibtex",
+      "args": [
+        "%DOCFILE%"
+      ]
+    },
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ]
+    }
+  ],
+  
+  // 编译方案配置
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "PDFLaTeX",
+      "tools": [
+        "pdflatex"
+      ]
+    },
+    {
+      "name": "XeLaTeX",
+      "tools": [
+        "xelatex"
+      ]
+    },
+    {
+      "name": "XeLaTeX -> BibTeX -> XeLaTeX*2",
+      "tools": [
+        "xelatex",
+        "bibtex",
+        "xelatex",
+        "xelatex"
+      ]
+    },
+    {
+      "name": "latexmk",
+      "tools": [
+        "latexmk"
+      ]
+    }
+  ],
+  
+  // 自动编译设置
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  
+  // PDF 查看器设置
+  "latex-workshop.view.pdf.viewer": "tab",
+  
+  // 清理辅助文件
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.snm",
+    "*.synctex(busy)",
+    "*.synctex.gz(busy)",
+    "*.nav"
+  ],
+  
+  // 自动清理
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+  
+  // 错误和警告设置
+  "latex-workshop.message.error.show": true,
+  "latex-workshop.message.warning.show": false,
+  
+  // 智能补全
+  "latex-workshop.intellisense.package.enabled": true,
+  
+  // 正反向搜索
+  "latex-workshop.synctex.afterBuild.enabled": true
+}
+
