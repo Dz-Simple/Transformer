@@ -102,20 +102,6 @@ chmod +x scripts/run.sh
 2. 测试 Encoder 和 Decoder
 3. 测试完整 Transformer 模型
 4. 训练模型
-5. 在测试集上评估模型
-
-#### 单独测试组件
-
-测试数据处理模块:
-```bash
-chmod +x scripts/test_data.sh
-./scripts/test_data.sh
-```
-
-测试消融实验导入:
-```bash
-python -m src.ablation_studies.test_imports
-```
 
 ### 4. 训练模型
 
@@ -166,19 +152,17 @@ python test.py
 
 ```bash
 # 实验1：注意力头数影响（1, 2, 4, 8头）
-python -m src.ablation_studies.ablation_1_num_heads --gpu 0
+python -m src.ablation_studies.ablation_1_num_heads
 
 # 实验2：模型层数影响（1, 2, 3, 4, 6层）
-python -m src.ablation_studies.ablation_2_num_layers --gpu 1
+python -m src.ablation_studies.ablation_2_num_layers
 
 # 实验3：位置编码策略（正弦/可学习/无）
-python -m src.ablation_studies.ablation_3_positional_encoding --gpu 2
+python -m src.ablation_studies.ablation_3_positional_encoding
 
 # 实验4：LayerNorm策略（Post-LN/Pre-LN/无）
-python -m src.ablation_studies.ablation_4_layer_norm --gpu 2
+python -m src.ablation_studies.ablation_4_layer_norm
 ```
-
-**注意**：可以使用 `--gpu` 参数指定GPU设备，支持多GPU并行运行多个实验。
 
 **消融实验结果**：
 - JSON数据：`results/ablation_*/results.json`
@@ -202,7 +186,7 @@ python -m src.ablation_studies.ablation_4_layer_norm --gpu 2
 
 详细结果请参考 `report.tex` 实验报告。
 
-## 🔧 项目特性
+## 项目特性
 
 - ✅ **完整实现**：从零实现 Transformer 所有核心组件
 - ✅ **Pre-LN架构**：使用Pre-LayerNorm，训练更稳定
@@ -213,7 +197,7 @@ python -m src.ablation_studies.ablation_4_layer_norm --gpu 2
 - ✅ **多GPU支持**：消融实验支持指定GPU设备
 - ✅ **完整评估**：BLEU、METEOR、困惑度等指标
 
-## 📝 依赖说明
+## 依赖说明
 
 主要依赖包：
 - `torch>=2.0.0` - PyTorch深度学习框架
@@ -225,26 +209,5 @@ python -m src.ablation_studies.ablation_4_layer_norm --gpu 2
 
 详细依赖请查看 `requirements.txt`。
 
-## 📚 参考文档
 
-- 实验报告：`report.tex`（LaTeX格式）
-- 训练日志：`results/plots_*/training_log.md`
-- 测试结果：`results/models_*/test_results/test_evaluation_summary.md`
 
-## ⚠️ 注意事项
-
-1. **GPU要求**：训练需要GPU支持（推荐CUDA 11.4+），CPU训练会非常慢
-2. **内存要求**：主训练需要约17GB GPU显存，消融实验需要约8-10GB
-3. **数据集路径**：确保 `datasets/iwslt14/` 目录包含所有必需文件
-4. **NLTK数据**：首次运行测试脚本时，NLTK会自动下载必要数据（punkt、wordnet等）
-
-## 🐛 问题排查
-
-- **CUDA内存不足**：减小 `batch_size` 或使用梯度累积
-- **NLTK数据下载失败**：手动下载NLTK数据到本地
-- **中文显示问题**：确保系统安装了中文字体（Noto Sans CJK等）
-
----
-
-**作者**：Mid-term Assignment  
-**日期**：2025年11月
