@@ -2,7 +2,7 @@
 
 本项目从零开始实现了完整的 Transformer 架构，用于德英机器翻译任务，使用 IWSLT14 数据集进行训练和评估。
 
-## 📁 项目结构
+## 项目结构
 
 ```
 Mid-term assignment/
@@ -16,44 +16,31 @@ Mid-term assignment/
 │   ├── data/                           # 数据处理模块
 │   │   ├── tokenizer.py                # 分词器（BPE支持）
 │   │   ├── vocabulary.py               # 词汇表
-│   │   └── dataset.py               # 数据集（IWSLT14）
-│   ├── ablation_studies/            # 消融实验
-│   │   ├── ablation_config.py       # 统一配置
-│   │   ├── ablation_1_num_heads.py  # 注意力头数消融
-│   │   ├── ablation_2_num_layers.py # 模型层数消融
-│   │   ├── ablation_3_positional_encoding.py  # 位置编码消融
-│   │   ├── ablation_4_layer_norm.py # LayerNorm策略消融
-│   │   └── test_imports.py          # 导入测试
-│   ├── encoder.py                   # Transformer Encoder
-│   ├── decoder.py                   # Transformer Decoder
-│   ├── transformer.py               # 完整 Transformer 模型
+│   │   └── dataset.py                  # 数据集（IWSLT14）
+│   ├── ablation_studies/               # 消融实验
+│   ├── encoder.py                      # Transformer Encoder
+│   ├── decoder.py                      # Transformer Decoder
+│   ├── transformer.py                  # 完整 Transformer 模型
 │   └── __init__.py
-├── scripts/                         # 脚本
-│   ├── run.sh                       # 完整测试和训练脚本
-│   └── test_data.sh                 # 数据模块测试（可选）
-├── datasets/                       # 数据集目录
-│   └── iwslt14/                    # IWSLT14 德英翻译数据集
-│       ├── train.de, train.en      # 训练集
-│       ├── valid.de, valid.en      # 验证集
-│       ├── test.de, test.en        # 测试集
-│       └── vocab.de, vocab.en       # 词汇表文件
-├── output/                          # 可视化输出（自动生成）
-├── results/                         # 训练结果（自动生成）
-│   ├── models_YYYYMMDD_HHMMSS/     # 模型检查点
-│   │   ├── best_model.pt            # 最佳模型
+├── scripts/                           # 脚本
+│   ├── run.sh                         # 完整测试和训练脚本
+├── datasets/                          # 数据集目录
+│   └── iwslt14/                       # IWSLT14 德英翻译数据集
+├── results/                           # 训练结果（自动生成）
+│   ├── models_YYYYMMDD_HHMMSS/        # 模型检查点
+│   │   ├── best_model.pt              # 最佳模型
 │   │   └── test_results/           # 测试集评估结果
 │   ├── plots_YYYYMMDD_HHMMSS/      # 训练曲线和日志
 │   ├── ablation_1_num_heads/       # 消融实验1结果
 │   ├── ablation_2_num_layers/      # 消融实验2结果
 │   ├── ablation_3_positional_encoding/  # 消融实验3结果
-│   └── ablation_4_layer_norm/      # 消融实验4结果
-├── train.py                         # 训练脚本
-├── test.py                          # 测试脚本（评估模型）
-├── requirements.txt                 # Python 依赖
-└── report.tex                       # 实验报告（LaTeX）
+│   └── ablation_4_layer_norm/           # 消融实验4结果
+├── train.py                           # 训练脚本
+├── test.py                            # 测试脚本（评估模型）
+├── requirements.txt                   # Python 依赖
 ```
 
-## 🚀 快速开始
+## 快速开始
 
 ### 1. 环境配置
 
